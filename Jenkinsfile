@@ -22,7 +22,8 @@ pipeline {
                 mail to: 'londhe.karishma61@example.com',
                      subject: "Weekly EC2 Report",
                      body: "Please find the attached weekly report.",
-                     attachLog: true
+                     attachmentsPattern: 'weekly_report.csv',
+                     mimeType: 'text/csv'
             }
         }
     }
