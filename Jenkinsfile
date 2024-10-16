@@ -21,7 +21,7 @@ pipeline {
             steps {
                 mail to: 'londhe.karishma61@example.com',
                      subject: "Weekly EC2 Report",
-                     body: "Please find the attached weekly report.",
+                     body: "Please find the attached weekly report."
                      // attachments: 'weekly_report.csv',
                      // mimeType: 'text/csv'
             }
