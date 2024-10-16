@@ -1,6 +1,14 @@
 pipeline {
     agent any
     stages {
+        stage('Install Venv') {
+            steps {
+                script {
+                    // Install python3-venv
+                    sh 'sudo apt-get update && sudo apt-get install -y python3-venv'
+                }
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 script {
