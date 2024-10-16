@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     // Install dependencies
-                    sh 'pip install boto3'
+                    sh 'pip3 install boto3'
                 }
             }
         }
