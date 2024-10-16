@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Run the script
-                    sh 'python3 generate_report.py'
+                    sh 'python3 hello-world.py'
                 }
             }
         }
@@ -22,8 +22,8 @@ pipeline {
                 mail to: 'londhe.karishma61@example.com',
                      subject: "Weekly EC2 Report",
                      body: "Please find the attached weekly report.",
-                     attachments: 'weekly_report.csv',
-                     mimeType: 'text/csv'
+                     // attachments: 'weekly_report.csv',
+                     // mimeType: 'text/csv'
             }
         }
     }
