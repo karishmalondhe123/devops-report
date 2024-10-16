@@ -4,16 +4,18 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Install dependencies
-                    sh 'pip3 install boto3'
+                    // Create a virtual environment
+                    sh 'python3 -m venv venv'
+                    // Install dependencies in the virtual environment
+                    sh './venv/bin/pip install boto3'
                 }
             }
         }
         stage('Generate Report') {
             steps {
                 script {
-                    // Run the script
-                    sh 'python3 hello-world.py'
+                    // Run the script within the virtual environment
+                    sh './venv/bin/python hello-world.py'
                 }
             }
         }
