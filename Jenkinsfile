@@ -13,18 +13,19 @@ pipeline {
             steps {
                 script {
                     // Send email using AWS SES SMTP
-                    def mailServer = 'email-smtp.us-east-1.amazonaws.com' // Change to your AWS SES SMTP endpoint
-                    def smtpPort = '465' // Use 465 for SSL
-
-                    // Use Jenkins credentials for SMTP user and password
-                    def smtpUser = credentials('ses-created') // Replace 'smtp_user' with your Jenkins credential ID
-                    def smtpPass = credentials('ses-created') // Replace 'smtp_pass' with your Jenkins credential ID
-
-                    def emailBody = "Please find the attached weekly report."
-
-                    sh """
-                    echo "${emailBody}" | mailx -s "Weekly EC2 Report" -S smtp="${mailServer}:${smtpPort}" -S smtp-auth=login -S smtp-auth-user="${smtpUser}" -S smtp-auth-password="${smtpPass}" -S ssl-verify=ignore londhe.karishma61@gmail.com
-                    """
+                    //def mailServer = 'email-smtp.us-west-2.amazonaws.com' // Change to your AWS SES SMTP endpoint
+                    //def smtpPort = '465' // Use 465 for SSL
+					//
+                    //// Use Jenkins credentials for SMTP user and password
+                    //def smtpUser = credentials('ses-created') // Replace 'smtp_user' with your Jenkins credential ID
+                    //def smtpPass = credentials('ses-created') // Replace 'smtp_pass' with your Jenkins credential ID
+					//
+                    //def emailBody = "Please find the attached weekly report."
+					//
+                    //sh """
+                    //echo "${emailBody}" | mailx -s "Weekly EC2 Report" -S smtp="${mailServer}:${smtpPort}" -S smtp-auth=login -S smtp-auth-user="${smtpUser}" -S smtp-auth-password="${smtpPass}" -S ssl-verify=ignore londhe.karishma61@gmail.com
+                    //"""
+					emailext body: 'Please find the attached weekly report.', subject: 'Weekly EC2 Report - Notification', to: 'londhe.karishma61@gmail.com'
                 }
             }
         }
