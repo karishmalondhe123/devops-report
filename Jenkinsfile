@@ -25,7 +25,7 @@ pipeline {
                     //sh """
                     //echo "${emailBody}" | mailx -s "Weekly EC2 Report" -S smtp="${mailServer}:${smtpPort}" -S smtp-auth=login -S smtp-auth-user="${smtpUser}" -S smtp-auth-password="${smtpPass}" -S ssl-verify=ignore londhe.karishma61@gmail.com
                     //"""
-					emailext body: 'Please find the attached weekly report.', subject: 'Weekly EC2 Report - Notification', to: 'londhe.karishma61@gmail.com'
+					emailext body: 'Please find the attached weekly report.', subject: 'Weekly EC2 Report - Notification', to: 'londhekarishma6994@gmail.com'
                 }
             }
         }
