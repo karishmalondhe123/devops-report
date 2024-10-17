@@ -11,11 +11,19 @@ pipeline {
         }
         stage('Send Email') {
             steps {
-                mail to: 'londhe.karishma61@example.com',
-                     subject: "Weekly EC2 Report",
-                     body: "Please find the attached weekly report."
-                     // attachments: 'weekly_report.csv',
-                     // mimeType: 'text/csv'
+                script {
+                    // Send email using AWS SES SMTP
+                    def mailServer = 'email-smtp.us-west-2.amazonaws.com' // Change to your AWS SES SMTP endpoint
+                    def smtpPort = '465' // Use 465 for SSL
+                    def smtpUser = 'AKIA3RYC6AKYIMJNFOV6'
+                    def smtpPass = 'BLUDSZ+LaCRR1Z/bOchOmMZKpV/HUUVYbcnxbCH8nP6N'
+
+                    def emailBody = "Please find the attached weekly report."
+
+                    sh """
+                    echo "${emailBody}" | mailx -s "Weekly EC2 Report" -S smtp="${mailServer}:${smtpPort}" -S smtp-auth=login -S smtp-auth-user="${smtpUser}" -S smtp-auth-password="${smtpPass}" -S ssl-verify=ignore londhe.karishma61@example.com
+                    """
+                }
             }
         }
     }
