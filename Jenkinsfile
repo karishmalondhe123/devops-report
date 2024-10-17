@@ -1,29 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Install Venv') {
+        stage('Run Hello World Script') {
             steps {
                 script {
-                    // Install python3-venv
-                    sh 'sudo apt-get update && sudo apt-get install -y python3-venv'
-                }
-            }
-        }
-        stage('Install Dependencies') {
-            steps {
-                script {
-                    // Create a virtual environment
-                    sh 'python3 -m venv venv'
-                    // Install dependencies in the virtual environment
-                    sh './venv/bin/pip install boto3'
-                }
-            }
-        }
-        stage('Generate Report') {
-            steps {
-                script {
-                    // Run the script within the virtual environment
-                    sh './venv/bin/python hello-world.py'
+                    // Run the hello-world.py script directly
+                    sh 'python3 hello-world.py'
                 }
             }
         }
