@@ -12,7 +12,8 @@ pipeline {
             emailext(
                 subject: 'Test Email',
                 body: 'Email sent from Jenkins',
-                to: 'londhekarishma6994@gmail.com'
+                to: 'londhekarishma6994@gmail.com',
+                from: 'londhekarishma6994@gmail.com'
             )
         }
     }
